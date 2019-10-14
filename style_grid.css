@@ -53,6 +53,10 @@ img:hover, button:hover, .grid-box:hover {
   background-color: white;
 }
 
+img:active, button:active, .grid-box:active {
+  background-color: white;
+}
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
