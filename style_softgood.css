@@ -51,13 +51,40 @@ p {
 
 .picture-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    justify-items: center;
-    grid-gap: 100%;
-    grid-row-gap: 10px;
-    max-width: 1200px;
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    grid-auto-rows: 1fr;
+    max-width: 60rem;
+    margin: 1rem;
+}
+
+.grid-box {
+    position: relative;
+    width: 100%;
+    background-color: gray;
 }
 
 .grid-box img {
-    width: 100%;
+    width: 80%;
+    margin: 0px;
+    padding: 2rem;
+}
+
+.grid-box button{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #8F8F8F;
+    border: none;
+    color: black;
+    padding: 0px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    border-radius: 10rem;
+    height: 5rem;
 }
