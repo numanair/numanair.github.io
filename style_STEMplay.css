@@ -47,6 +47,7 @@ p {
   text-align: left;
   font-size: 20px;
   margin: 1vh 8vw;
+  padding-top: 1vh;
 }
 
 a {
@@ -72,7 +73,18 @@ img:active, button:active, .grid-box:active {
   min-height: 100vh;
   grid-column: 1;
   grid-row: 1;
+  padding-bottom: 0;
   /* background-color: orange; */
+}
+
+.padder {
+  padding: 20px;
+}
+
+.rows::after {
+  content: "";
+  clear: both;
+  display: table;
 }
 
 .project_desc {
@@ -92,10 +104,20 @@ img:active, button:active, .grid-box:active {
 }
 
 @media only screen and (min-width: 840px) {
+
   /* For desktop: */
-  .grid-container {width: 60%;padding-right: 1rem;}
-  .project_desc {width: 40%;}
-  p {margin: 0;}
+  .grid-container {
+    width: 60%;
+    padding-right: 1rem;
+  }
+
+  .project_desc {
+    width: 40%;
+  }
+
+  p {
+    margin: 0;
+  }
 }
 
 .grid-item {
