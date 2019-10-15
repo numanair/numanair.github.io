@@ -61,11 +61,6 @@ img:active, button:active, .grid-box:active {
   background-color: white;
 }
 
-.grid-megacontainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
 .grid-container {
   display: grid;
   height: 100%;
@@ -77,7 +72,7 @@ img:active, button:active, .grid-box:active {
   min-height: 100vh;
   grid-column: 1;
   grid-row: 1;
-  background-color: orange;
+  /* background-color: orange; */
 }
 
 .project_desc {
@@ -85,6 +80,22 @@ img:active, button:active, .grid-box:active {
   padding: 0;
   margin: 0;
   min-width: 100px;
+}
+
+.column {
+  float: left;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media only screen and (min-width: 840px) {
+  /* For desktop: */
+  .grid-container {width: 60%;padding-right: 1rem;}
+  .project_desc {width: 40%;}
+  p {margin: 0;}
 }
 
 .grid-item {
