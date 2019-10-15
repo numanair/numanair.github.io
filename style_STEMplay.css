@@ -61,6 +61,11 @@ img:active, button:active, .grid-box:active {
   background-color: white;
 }
 
+.grid-megacontainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
 .grid-container {
   display: grid;
   height: 100%;
@@ -70,6 +75,16 @@ img:active, button:active, .grid-box:active {
   grid-gap: 1rem;
   max-width: 1000px;
   min-height: 100vh;
+  grid-column: 1;
+  grid-row: 1;
+  background-color: orange;
+}
+
+.project_desc {
+  max-width: 500px;
+  padding: 0;
+  margin: 0;
+  min-width: 100px;
 }
 
 .grid-item {
