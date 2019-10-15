@@ -1,9 +1,9 @@
 body {
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
-    background-color: wheat;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  background-color: wheat;
 }
 
 h1 {
@@ -57,66 +57,70 @@ img:active, button:active, .grid-box:active {
   background-color: white;
 }
 
+a {
+  color: black;
+}
+
 .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
-    grid-auto-rows: 1fr;
-    max-width: 60rem;
-    margin: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  grid-auto-rows: 1fr;
+  max-width: 60rem;
+  margin: 1rem;
 }
 
 .grid-box {
-    position: relative;
-    width: 100%;
+  position: relative;
+  width: 100%;
 }
 
 .grid-box img {
-    width: 80%;
-    margin: 0px;
-    padding: 2rem;
+  width: 80%;
+  margin: 0px;
+  padding: 2rem;
 }
 
-.grid-box button{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    background-color: #8F8F8F;
-    border: none;
-    color: black;
-    padding: 0px 25px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-    cursor: pointer;
-    border-radius: 10rem;
-    height: 5rem;
+.grid-box button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #8F8F8F;
+  border: none;
+  color: black;
+  padding: 0px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+  border-radius: 10rem;
+  height: 5rem;
 }
 
-.grid-box .button_STEMplay{
-    background-color: #D6E539;
-    color: black;
+.grid-box .button_STEMplay {
+  background-color: #D6E539;
+  color: black;
 }
 
-.grid-box .button_lantern{
-    background-color: #ED9B19;
-    color: black;
+.grid-box .button_lantern {
+  background-color: #ED9B19;
+  color: black;
 }
 
-.grid-box .button_softgood{
+.grid-box .button_softgood {
   background-color: #E53B39;
   color: black;
 }
 
-.grid-box .button_PMI{
+.grid-box .button_PMI {
   background-color: #39E578;
   color: black;
 }
 
-.grid-box .button_plywood{
+.grid-box .button_plywood {
   background-color: #39C0E5;
   color: black;
 }
