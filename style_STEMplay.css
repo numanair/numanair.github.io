@@ -43,7 +43,7 @@ h4 {
 
 p {
   font-family: 'Open Sans', sans-serif;
-  color: gray;
+  color: black;
   text-align: left;
   font-size: 20px;
   margin: 1vh 8vw;
@@ -65,17 +65,18 @@ img:active, button:active, .grid-box:active {
   display: grid;
   height: 100%;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   padding: 1vh 8vw;
-  grid-gap: 10px;
+  grid-gap: 1rem;
   max-width: 1000px;
   min-height: 100vh;
 }
 
 .grid-item {
-  background-color: black;
+  background-color: white;
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .hero {
@@ -87,15 +88,23 @@ img:active, button:active, .grid-box:active {
 
 .aux {
   grid-column: 2 / span 2;
-  grid-row: span 2;
+  grid-row: 4 / span 2;
   background-image: url(images/STEMplay/c17.png);
+  background-position: center top 70%;
 }
 
-.process {
-  grid-row-start: 2;
+.cardback {
   grid-column: span 1;
-  grid-row: span 2;
-  background-image: url(images/lantern_hero_low-angle_2-1.png);
+  grid-row: 4 / span 2;
+  background-image: url(images/STEMplay/card-back.png);
+  background-size: contain;
+}
+
+.sketches {
+  grid-column: span 3;
+  grid-row: 6 / span 1;
+  background-image: url(images/STEMplay/sketches.png);
+  background-position: center right 35%;
 }
 
 .grid-container img {
