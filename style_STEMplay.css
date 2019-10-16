@@ -92,7 +92,7 @@ img:active, button:active, .grid-box:active {
   display: grid;
   height: auto;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 4fr 3fr 1fr 1fr 1fr;
+  grid-template-rows: 4fr 1.5fr 1fr 1fr 1fr;
   padding: 1vh 8vw;
   grid-gap: 1rem;
   max-width: 1000px;
@@ -126,32 +126,6 @@ img:active, button:active, .grid-box:active {
 
 * {
   box-sizing: border-box;
-}
-
-@media only screen and (min-width: 840px) {
-
-  /* For desktop: */
-  .grid-container {
-    width: 60%;
-    padding-right: 1rem;
-  }
-
-  .project_desc {
-    width: 40%;
-    font-size: 20px;
-  }
-
-  .project_desc p {
-    font-size: 20px;
-  }
-
-  ul span {
-    font-size: 20px;
-  }
-
-  p {
-    margin: 0;
-  }
 }
 
 .grid-item {
@@ -216,22 +190,33 @@ img:active, button:active, .grid-box:active {
   display: block;
 }
 
-.grid-box button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  background-color: #8F8F8F;
-  border: none;
-  color: black;
-  padding: 0px 25px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-  cursor: pointer;
-  border-radius: 10rem;
-  height: 5rem;
+@media only screen and (min-width: 840px) {
+
+  /* For desktop: */
+  .grid-container {
+    width: 60%;
+    padding-right: 1rem;
+    grid-template-rows: 4fr 3fr 1fr 1fr 1fr;
+  }
+
+  .project_desc {
+    width: 40%;
+    font-size: 20px;
+  }
+
+  .project_desc p {
+    font-size: 20px;
+  }
+
+  .hero {
+    height: 40rem;
+  }
+
+  ul span {
+    font-size: 20px;
+  }
+
+  p {
+    margin: 0;
+  }
 }
