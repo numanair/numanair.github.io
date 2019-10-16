@@ -66,15 +66,13 @@ img:active, button:active, .grid-box:active {
   display: grid;
   height: 100%;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-rows: 5fr 2fr 1fr 1fr;
   padding: 1vh 8vw;
   grid-gap: 1rem;
   max-width: 1000px;
-  min-height: 100vh;
   grid-column: 1;
   grid-row: 1;
   padding-bottom: 0;
-  /* background-color: orange; */
 }
 
 .padder {
@@ -127,34 +125,46 @@ img:active, button:active, .grid-box:active {
   background-repeat: no-repeat;
 }
 
+/* grid items */
 .hero {
   grid-column: span 3;
-  grid-row: span 3;
+  grid-row: span 1;
   background-image: url(images/STEMplay/kids_play.jpg);
   background-position: center top 70%;
+  height: 1000px;
 }
 
 .aux {
   grid-column: 2 / span 2;
-  grid-row: 4 / span 2;
+  grid-row: 2 / span 1;
   background-image: url(images/STEMplay/c17.png);
   background-position: center top 70%;
 }
 
 .cardback {
   grid-column: span 1;
-  grid-row: 4 / span 2;
+  grid-row: 2 / span 1;
   background-image: url(images/STEMplay/card-back.png);
   background-size: contain;
 }
 
 .sketches {
   grid-column: span 3;
-  grid-row: 6 / span 1;
+  grid-row: 3 / span 1;
   background-image: url(images/STEMplay/sketches.png);
   background-position: center right 35%;
+  height: 12rem;
 }
 
+.prototypes {
+  grid-column: span 3;
+  grid-row: 4 / span 1;
+  background-image: url(images/STEMplay/sketches.png);
+  background-position: center right 35%;
+  background-size: contain;
+}
+
+/* end grid items */
 .grid-container img {
   width: 100%;
   display: block;
