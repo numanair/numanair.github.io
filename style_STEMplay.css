@@ -43,11 +43,37 @@ h4 {
 
 p {
   font-family: 'Open Sans', sans-serif;
+  color: gray;
+  text-align: left;
+  font-size: 17px;
+  margin: 1vh 8vw;
+}
+
+.project_desc p {
+  font-family: 'Open Sans', sans-serif;
   color: black;
   text-align: left;
-  font-size: 20px;
+  font-size: 17px;
+  padding-top: 5px;
+  margin: 1rem;
+}
+
+.copyright {
   margin: 1vh 8vw;
-  padding-top: 1vh;
+}
+
+ul {
+  font-family: 'Open Sans', sans-serif;
+  color: black;
+  text-align: left;
+  font-size: 15px;
+  margin: 0 10px;
+  list-style-position: inside;
+  list-style-type: disc;
+}
+
+ul span {
+  font-size: 17px;
 }
 
 a {
@@ -64,14 +90,12 @@ img:active, button:active, .grid-box:active {
 
 .grid-container {
   display: grid;
-  height: 100%;
+  height: auto;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 5fr 2fr 1fr 1fr;
+  grid-template-rows: 4fr 3fr 1fr 1fr 1fr;
   padding: 1vh 8vw;
   grid-gap: 1rem;
   max-width: 1000px;
-  grid-column: 1;
-  grid-row: 1;
   padding-bottom: 0;
 }
 
@@ -86,7 +110,10 @@ img:active, button:active, .grid-box:active {
 }
 
 .project_desc {
-  max-width: 500px;
+  color: black;
+  margin: 1vh 8vw;
+  padding-top: 1vh;
+  max-width: 800px;
   padding: 0;
   margin: 0;
   min-width: 100px;
@@ -111,6 +138,15 @@ img:active, button:active, .grid-box:active {
 
   .project_desc {
     width: 40%;
+    font-size: 20px;
+  }
+
+  .project_desc p {
+    font-size: 20px;
+  }
+
+  ul span {
+    font-size: 20px;
   }
 
   p {
@@ -131,7 +167,7 @@ img:active, button:active, .grid-box:active {
   grid-row: span 1;
   background-image: url(images/STEMplay/kids_play.jpg);
   background-position: center top 70%;
-  height: 1000px;
+  height: 30rem;
 }
 
 .aux {
@@ -153,15 +189,25 @@ img:active, button:active, .grid-box:active {
   grid-row: 3 / span 1;
   background-image: url(images/STEMplay/sketches.png);
   background-position: center right 35%;
-  height: 12rem;
+  /* height: 1rem; */
 }
 
 .prototypes {
   grid-column: span 3;
   grid-row: 4 / span 1;
-  background-image: url(images/STEMplay/sketches.png);
-  background-position: center right 35%;
+  background-image: url(images/STEMplay/prototypes.jpg);
+  background-position: center;
+  background-size: cover;
+  background-color: black;
+}
+
+.blocktypes {
+  grid-column: span 3;
+  grid-row: 5 / span 1;
+  background-image: url(images/STEMplay/blocktypes.png);
+  background-position: center;
   background-size: contain;
+  background-color: white;
 }
 
 /* end grid items */
