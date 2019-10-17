@@ -152,6 +152,7 @@ img:active, button:active, .grid-box:active {
   background-image: url(images/PMI/sketches.jpg);
   background-position: top left 15%;
   background-size: cover;
+  background-color: white;
   /* height: 1rem; */
 }
 
@@ -208,22 +209,22 @@ img:active, button:active, .grid-box:active {
 
   .hero-triple {
     height: 40rem;
-}
+  }
 
-.project_desc {
-  width: 40%;
-  font-size: 20px;
-}
+  .project_desc {
+    width: 40%;
+    font-size: 20px;
+  }
 
-.project_desc p {
-  font-size: 20px;
-}
+  .project_desc p {
+    font-size: 20px;
+  }
 
-ul span {
-  font-size: 20px;
-}
+  ul span {
+    font-size: 20px;
+  }
 
-p {
-  margin: 0;
-}
+  p {
+    margin: 0;
+  }
 }
