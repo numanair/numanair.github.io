@@ -43,41 +43,187 @@ h4 {
 
 p {
   font-family: 'Open Sans', sans-serif;
+  color: gray;
+  text-align: left;
+  font-size: 17px;
+  margin: 1vh 8vw;
+}
+
+.project_desc p {
+  font-family: 'Open Sans', sans-serif;
   color: black;
   text-align: left;
-  font-size: 20px;
+  font-size: 17px;
+  padding-top: 5px;
+  margin: 1rem;
+}
+
+.copyright {
   margin: 1vh 8vw;
+}
+
+ul {
+  font-family: 'Open Sans', sans-serif;
+  color: black;
+  text-align: left;
+  font-size: 15px;
+  margin: 0 10px;
+  list-style-position: inside;
+  list-style-type: disc;
+}
+
+ul span {
+  font-size: 17px;
 }
 
 a {
   color: black;
 }
 
-main {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+img:hover, button:hover, .grid-container>div:hover {
+  background-color: white;
 }
 
-.box{
-  background-color: blue;
+img:active, button:active, .grid-box:active {
+  background-color: white;
 }
 
-.grid-box button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  background-color: #8F8F8F;
-  border: none;
+.padder {
+  padding: 20px;
+}
+
+.rows::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.project_desc {
   color: black;
-  padding: 0px 25px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-  cursor: pointer;
-  border-radius: 10rem;
-  height: 5rem;
+  margin: 1vh 8vw;
+  padding-top: 1vh;
+  max-width: 800px;
+  padding: 0;
+  margin: 0;
+  min-width: 100px;
+}
+
+.column {
+  float: left;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.grid-item {
+  background-color: white;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.grid-container {
+  display: grid;
+  height: auto;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 6fr 3fr 3fr 4fr;
+  padding: 1vh 8vw;
+  grid-gap: 1rem;
+  max-width: 1000px;
+  padding-bottom: 0;
+}
+
+/* grid items */
+.hero-triple {
+  grid-column: 1 / span 5;
+  grid-row: 1 / span 1;
+  background-image: url(images/PMI/keyshot3x.jpg);
+  height: 16rem;
+  background-position: center right 30%;
+  background-size: cover;
+  background-color: #444444;
+}
+
+.sketches {
+  grid-column: 1 / span 2;
+  grid-row: 2 / span 1;
+  background-image: url(images/PMI/sketches.jpg);
+  background-position: top left 15%;
+  background-size: cover;
+  /* height: 1rem; */
+}
+
+.ps-renders {
+  grid-column: 3 / span 3;
+  grid-row: 2 / span 1;
+  background-image: url(images/PMI/ps-render.jpg);
+  background-position: center bottom 65%;
+  background-size: contain;
+  background-color: white;
+}
+
+.cap-render {
+  grid-column: 1 / span 3;
+  grid-row: 3 / span 1;
+  background-image: url(images/PMI/double.png);
+  background-position: center;
+  background-size: cover;
+  background-color: gray;
+}
+
+.cross-section {
+  grid-column: 4 / span 2;
+  grid-row: 3 / span 1;
+  background-image: url(images/PMI/section-view.png);
+  background-position: center;
+  background-size: cover;
+  background-color: gray;
+}
+
+.context-render {
+  grid-column: 1 / span 5;
+  grid-row: 4 / span 1;
+  background-image: url(images/PMI/context-overlook.jpg);
+  background-position: center bottom;
+  background-size: cover;
+  background-color: white;
+}
+
+/* end grid items */
+.grid-container img {
+  width: 100%;
+  display: block;
+}
+
+@media only screen and (min-width: 840px) {
+
+  /* For desktop: */
+  .grid-container {
+    width: 60%;
+    padding-right: 1rem;
+    grid-template-rows: 3fr 1fr 2fr 3fr;
+  }
+
+  .hero-triple {
+    height: 40rem;
+}
+
+.project_desc {
+  width: 40%;
+  font-size: 20px;
+}
+
+.project_desc p {
+  font-size: 20px;
+}
+
+ul span {
+  font-size: 20px;
+}
+
+p {
+  margin: 0;
+}
 }
