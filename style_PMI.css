@@ -130,7 +130,7 @@ img:active, button:active, .grid-box:active {
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 6fr 3fr 3fr 4fr;
   padding: 1vh 8vw;
-  grid-gap: 1rem;
+  grid-gap: 0.5rem;
   max-width: 1000px;
   padding-bottom: 0;
 }
