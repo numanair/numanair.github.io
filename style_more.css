@@ -141,6 +141,16 @@ a {
   background-size: cover;
 }
 
+.blower {
+  grid-column: 1 / span 1;
+  grid-row: 4 / span 1;
+}
+
+.coasters {
+  grid-column: 1 / span 1;
+  grid-row: 3 / span 1;
+}
+
 img {
   display: block;
   width: 100%;
