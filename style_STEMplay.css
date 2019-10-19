@@ -92,7 +92,7 @@ img:active, button:active, .grid-box:active {
   display: grid;
   height: auto;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 4fr 1.5fr 1fr 1fr 1fr;
+  grid-template-rows: 4fr auto 1fr 1fr 1fr 1fr;
   padding: 1vh 8vw;
   grid-gap: 0.5rem;
   max-width: 1000px;
@@ -137,30 +137,31 @@ img:active, button:active, .grid-box:active {
 
 /* grid items */
 .hero {
-  grid-column: span 3;
-  grid-row: span 1;
+  grid-column: 1 / span 3;
+  grid-row: 1 / span 1;
   background-image: url(images/STEMplay/kids_play.jpg);
   background-position: center top 70%;
-  height: 30rem;
+  height: auto;
 }
 
 .aux {
   grid-column: 2 / span 2;
-  grid-row: 2 / span 1;
+  grid-row: 3 / span 1;
   background-image: url(images/STEMplay/c17.png);
   background-position: center top 70%;
+  height: auto;
 }
 
 .cardback {
   grid-column: span 1;
-  grid-row: 2 / span 1;
+  grid-row: 3 / span 1;
   background-image: url(images/STEMplay/card-back.png);
   background-size: contain;
 }
 
 .sketches {
   grid-column: span 3;
-  grid-row: 3 / span 1;
+  grid-row: 4 / span 1;
   background-image: url(images/STEMplay/sketches.png);
   background-position: center right 35%;
   /* height: 1rem; */
@@ -168,7 +169,7 @@ img:active, button:active, .grid-box:active {
 
 .prototypes {
   grid-column: span 3;
-  grid-row: 4 / span 1;
+  grid-row: 5 / span 1;
   background-image: url(images/STEMplay/prototypes.jpg);
   background-position: center;
   background-size: cover;
@@ -177,17 +178,31 @@ img:active, button:active, .grid-box:active {
 
 .blocktypes {
   grid-column: span 3;
-  grid-row: 5 / span 1;
+  grid-row: 6 / span 1;
   background-image: url(images/STEMplay/blocktypes.png);
   background-position: center;
   background-size: contain;
   background-color: white;
 }
 
+.videodemo {
+  grid-column: 1 / span 3;
+  grid-row: 2 / span 1;
+  width: 100%;
+  height: auto;
+}
+
 /* end grid items */
 .grid-container img {
-  width: 100%;
   display: block;
+  width: 100%;
+  height: auto;
+}
+
+video {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 @media only screen and (min-width: 840px) {
@@ -196,7 +211,7 @@ img:active, button:active, .grid-box:active {
   .grid-container {
     width: 60%;
     padding-right: 1rem;
-    grid-template-rows: 4fr 3fr 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto 1fr 1fr;
   }
 
   .project_desc {
