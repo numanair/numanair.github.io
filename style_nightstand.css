@@ -128,10 +128,14 @@ a {
 }
 
 /* grid items */
-.hero-assembled { grid-column: 1 / span 4; grid-row: 1 / span 2;
-background-image: url(images/nightstand/hero-assembled.jpg);
-background-position: center; background-size: contain; background-color: white;
-height: 14rem;
+.hero-assembled {
+  grid-column: 1 / span 4;
+  grid-row: 1 / span 2;
+  background-image: url(images/nightstand/hero-assembled.jpg);
+  background-position: center;
+  background-size: contain;
+  background-color: white;
+  height: 14rem;
 }
 
 .sketches {
@@ -197,7 +201,6 @@ height: 14rem;
   background-size: cover;
   background-color: white;
 } */
-
 /* prototypes */
 .foamcore-CAD-short {
   grid-column: 3 / span 1;
