@@ -141,14 +141,19 @@ a {
   background-size: cover;
 }
 
-.blower {
+.coasters {
+  grid-column: 1 / span 1;
+  grid-row: 3 / span 1;
+}
+
+.SLAT {
   grid-column: 1 / span 1;
   grid-row: 4 / span 1;
 }
 
-.coasters {
+.blower {
   grid-column: 1 / span 1;
-  grid-row: 3 / span 1;
+  grid-row: 5 / span 1;
 }
 
 img {
