@@ -1,0 +1,211 @@
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  background-color: wheat;
+}
+
+h1 {
+  font-family: 'Raleway', sans-serif;
+  color: black;
+  text-align: left;
+  font-size: 56px;
+  font-style: 700;
+  margin: 1vh 8vw;
+}
+
+h2 {
+  font-family: 'Raleway', sans-serif;
+  color: black;
+  text-align: center;
+  font-size: 20px;
+  font-style: 800;
+}
+
+h3 {
+  font-family: 'Open Sans', sans-serif;
+  color: gray;
+  text-align: left;
+  font-size: 24px;
+  letter-spacing: 3px;
+  margin: 0 8vw;
+}
+
+h4 {
+  font-family: 'Raleway', sans-serif;
+  color: black;
+  text-align: left;
+  font-size: 20px;
+  font-style: 800;
+  margin: 1vh 8vw;
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
+  color: gray;
+  text-align: left;
+  font-size: 17px;
+  margin: 1vh 8vw;
+}
+
+.project_desc p {
+  font-family: 'Open Sans', sans-serif;
+  color: black;
+  text-align: left;
+  font-size: 17px;
+  padding-top: 5px;
+  margin: 1rem;
+}
+
+.copyright {
+  margin: 1vh 8vw;
+}
+
+ul {
+  font-family: 'Open Sans', sans-serif;
+  color: black;
+  text-align: left;
+  font-size: 15px;
+  margin: 0 10px;
+  list-style-position: inside;
+  list-style-type: disc;
+}
+
+ul span {
+  font-size: 17px;
+}
+
+a {
+  color: black;
+}
+
+img:hover, button:hover, .grid-container>div:hover {
+  background-color: white;
+}
+
+img:active, button:active, .grid-box:active {
+  background-color: white;
+}
+
+.grid-container {
+  display: grid;
+  height: auto;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(3, auto);
+  padding: 1vh 8vw;
+  grid-gap: 0.5rem;
+  max-width: 1000px;
+  padding-bottom: 0;
+}
+
+.padder {
+  padding: 20px;
+}
+
+.rows::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.project_desc {
+  color: black;
+  margin: 1vh 8vw;
+  padding-top: 1vh;
+  max-width: 800px;
+  padding: 0;
+  margin: 0;
+  min-width: 100px;
+}
+
+.column {
+  float: left;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.grid-item {
+  background-color: white;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* grid items */
+.hero {
+  grid-column: 1 / span 6;
+  grid-row: 1 / span 1;
+  width: 100%;
+}
+
+.packaging {
+  grid-column: 1 / span 2;
+  grid-row: 2 / span 1;
+}
+
+.aux {
+  grid-column: 3 / span 4;
+  grid-row: 2 / span 1;
+  background-image: url(images/REMADE/IMGP0414.jpg);
+  background-size: cover;
+}
+
+.packaging-red {
+  grid-column: 4 / span 3;
+  grid-row: 3 / span 1;
+  background-color: black;
+}
+
+.bottom {
+  grid-column: 1 / span 3;
+  grid-row: 3 / span 1;
+  background-color: black;
+}
+
+/* end grid items */
+.grid-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media only screen and (min-width: 840px) {
+
+  /* For desktop: */
+  .grid-container {
+    width: 60%;
+    padding-right: 1rem;
+    grid-template-rows: repeat(3, auto);
+  }
+
+  .project_desc {
+    width: 40%;
+    font-size: 20px;
+  }
+
+  .project_desc p {
+    font-size: 20px;
+  }
+
+  .hero {
+    height: auto;
+  }
+
+  ul span {
+    font-size: 20px;
+  }
+
+  p {
+    margin: 0;
+  }
+}
