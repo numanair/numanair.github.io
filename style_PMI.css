@@ -168,7 +168,7 @@ img:active, button:active, .grid-box:active {
 .cap-render {
   grid-column: 1 / span 3;
   grid-row: 3 / span 1;
-  background-image: url(images/PMI/double.png);
+  background-image: url(images/PMI/double.jpg);
   background-position: center;
   background-size: cover;
   background-color: gray;
