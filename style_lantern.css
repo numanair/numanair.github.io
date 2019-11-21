@@ -92,7 +92,7 @@ img:active, button:active, .grid-box:active {
   display: grid;
   height: auto;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(6, auto);
+  grid-template-rows: repeat(5, auto);
   padding: 1vh 8vw;
   grid-gap: 0.5rem;
   max-width: 1000px;
