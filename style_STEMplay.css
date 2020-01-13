@@ -92,7 +92,7 @@ img:active, button:active, .grid-box:active {
   display: grid;
   height: auto;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 4fr auto 1fr 1fr 1fr 1fr;
+  grid-template-rows: 4fr auto 1fr auto 1fr 1fr;
   padding: 1vh 8vw;
   grid-gap: 0.5rem;
   max-width: 1000px;
@@ -164,7 +164,7 @@ img:active, button:active, .grid-box:active {
   grid-row: 4 / span 1;
   background-image: url(images/STEMplay/sketches.png);
   background-position: center right 35%;
-  /* height: 1rem; */
+  height: auto;
 }
 
 .prototypes {
@@ -211,7 +211,7 @@ video {
   .grid-container {
     width: 60%;
     padding-right: 1rem;
-    grid-template-rows: auto auto auto 1fr 1fr;
+    grid-template-rows: auto auto auto 1fr 1fr 1fr;
   }
 
   .project_desc {
