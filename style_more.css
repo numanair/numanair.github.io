@@ -151,6 +151,11 @@ a {
   grid-row: 5 / span 1;
 }
 
+.cinch-strap {
+  grid-column: 1 / span 1;
+  grid-row: 6 / span 1;
+}
+
 img {
   display: block;
   width: 100%;
