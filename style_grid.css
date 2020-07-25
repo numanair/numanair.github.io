@@ -137,6 +137,10 @@ a {
   background-color: #E66089;
 }
 
+.grid-box .button_audiocontroller {
+  background-color: #D2CA39;
+}
+
 .grid-box .button_animated {
   color: rgba(0, 0, 0, 1);
   background-color: rgba(255, 255, 255, 0.5);
