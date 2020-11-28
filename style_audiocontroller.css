@@ -92,7 +92,7 @@ img:active, button:active, .grid-box:active {
   display: grid;
   height: auto;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, auto);
+  grid-template-rows: repeat(4, auto);
   padding: 1vh 8vw;
   grid-gap: 0.5rem;
   max-width: 1000px;
@@ -163,6 +163,12 @@ img:active, button:active, .grid-box:active {
 .eng-drawing {
   grid-column: 1 / span 4;
   grid-row: 3 / span 1;
+  background-color: black;
+}
+
+.eng-PCB {
+  grid-column: 1 / span 4;
+  grid-row: 4 / span 1;
   background-color: black;
 }
 
