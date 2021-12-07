@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta
+      charset="UTF-8"
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>audiocontroller - Cole Morris</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="style_audiocontroller_3D.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300|Raleway:700,800"
+      rel="stylesheet"
+    />
+    <!-- <a class="header" href="/index.html">
+      <h1>COLE MORRIS</h1>
+      <h3>Industrial Designer</h3>
+    </a> -->
+  </head>
+  <body>
+    <!-- The main three.js file -->
+    <script src="https://unpkg.com/three@0.127.0/build/three.js"></script>
+
+    <!-- glTF 3D object file format support. -->
+    <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r92/examples/js/loaders/GLTFLoader.js"></script>
+
+    <!-- three.js extension for rotating, dragging and zooming controls. Mouse and touch. -->
+    <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
+
+    <!-- Just a quick notice to the user that it can be interacted with -->
+    <span class="drag-notice" id="js-drag-notice"
+      >Drag to rotate 360&#176;</span
+    >
+    <!-- The canvas element is used to draw the 3D scene -->
+    <canvas id="c"></canvas>
+
+    <div>
+      <!-- Selects between parts to apply color to.
+      knob
+      faceplate
+      base
+      Note data-option is the key that links to the name of the part in the 3D file -->
+      <div class="options">
+        <div class="option --is-active" data-option="knob">
+          <img src="images/audiocontroller/3D_parts/knobs.svg" alt="" />
+        </div>
+        <div class="option" data-option="faceplate">
+          <img src="images/audiocontroller/3D_parts/faceplate.svg" alt="" />
+        </div>
+        <div class="option" data-option="base">
+          <img src="images/audiocontroller/3D_parts/base.svg" alt="" />
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="info">
+          <div class="info__message">
+            <p>
+              <strong>&nbsp;Drag&nbsp;</strong> to rotate view.
+              <strong>&nbsp;Scroll&nbsp;</strong> to zoom. Click
+              <strong>&nbsp;parts&nbsp;</strong> on the left to select. Click
+              <strong>&nbsp;colors&nbsp;</strong> to apply.
+              <!-- <strong>&nbsp;Drag&nbsp;</strong> swatches to view more. -->
+            </p>
+          </div>
+        </div>
+
+        <!-- This tray will be filled with colors via JS, and the ability to slide this panel will be added in with a lightweight slider script (no dependency used for this) -->
+        <div id="js-tray" class="tray">
+          <div id="js-tray-slide" class="tray__slide"></div>
+        </div>
+      </div>
+
+      <script>
+        const colors = [
+          {
+            color: "c1f6f7", // mint
+            shininess: 50,
+            // texture: "images\audiocontroller\3D_parts\base.png",
+            // size: [3, 3, 3],
+          },
+          {
+            color: "202fba", // true blue
+          },
+          {
+            color: "70c930", // lime
+          },
+          {
+            color: "d9161c", // red
+            shininess: 50,
+          },
+          {
+            color: "b397e8", // lavender
+            shininess: 50,
+          },
+          {
+            color: "ffabeb", // pink
+            shininess: 50,
+          },
+          {
+            color: "ff7119", // Orange
+            shininess: 65,
+          },
+          {
+            color: "f7faff", // White
+            shininess: 65,
+          },
+          {
+            color: "696a6b", // gray
+            shininess: 25,
+          },
+          {
+            color: "141414", // black
+            shininess: 65,
+          },
+        ];
+
+        // Settings
+
+        var activeOption = "knob";
+        var cameraDist = 5;
+        var deejModel;
+        var loaded = false;
+        const DRAG_NOTICE = document.getElementById("js-drag-notice");
+        const BACKGROUND_COLOR = 0xb0c4de;
+        const FOG_COLOR = BACKGROUND_COLOR;
+        const MODEL_PATH = "deej boxes for WEB.glb";
+        const MODEL_SCALE = 2;
+        const OBJ_VERT = -0.5;
+        const TRAY = document.getElementById("js-tray-slide");
+
+        // Init the scene
+        const scene = new THREE.Scene();
+
+        // Set background
+        scene.background = new THREE.Color(BACKGROUND_COLOR);
+        scene.fog = new THREE.Fog(BACKGROUND_COLOR, 4, 40);
+
+        const canvas = document.querySelector("#c");
+
+        // Init the renderer
+        const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+        document.body.appendChild(renderer.domElement);
+        renderer.shadowMap.enabled = true;
+        renderer.setPixelRatio(window.devicePixelRatio);
+
+        // Add a camera
+        var camera = new THREE.PerspectiveCamera(
+          30,
+          window.innerWidth / window.innerHeight,
+          0.1,
+          1000
+        );
+
+        camera.position.z = cameraDist;
+        camera.position.x = 0;
+        camera.position.y = 2;
+
+        // Initial materials
+        const MTL_RUBBER = new THREE.MeshPhongMaterial({
+          color: 0x000000,
+          shininess: 0,
+        });
+        const MTL_USB_METAL = new THREE.MeshPhongMaterial({
+          color: 0xadadad,
+          shininess: 100,
+        });
+        const MTL_USB_PLASTIC = new THREE.MeshPhongMaterial({
+          color: 0x0f0f0f,
+          shininess: 0,
+        });
+        const MTL_SCREWS = new THREE.MeshPhongMaterial({
+          color: 0x1c1a19,
+          shininess: 75,
+        });
+        const MTL_DUSTCOVER = new THREE.MeshPhongMaterial({
+          color: 0x000000,
+          shininess: 90,
+        });
+        const MTL_DARK = new THREE.MeshPhongMaterial({
+          color: 0x1c1c1c,
+          shininess: 0,
+        });
+        const INITIAL_MTL = new THREE.MeshPhongMaterial({
+          color: 0xf1f1f1,
+          shininess: 10,
+        });
+        const INITIAL_MAP = [
+          { childID: "knob", mtl: INITIAL_MTL },
+          { childID: "faceplate", mtl: INITIAL_MTL },
+          { childID: "base", mtl: INITIAL_MTL },
+          { childID: "feet", mtl: MTL_RUBBER },
+          { childID: "screws", mtl: MTL_SCREWS },
+          { childID: "dustcover", mtl: MTL_DUSTCOVER },
+          { childID: "usb-metal", mtl: MTL_USB_METAL },
+          { childID: "usb-inner", mtl: MTL_USB_PLASTIC },
+          { childID: "inside", mtl: MTL_DARK },
+        ];
+
+        // Init the object loader
+        var loader = new THREE.GLTFLoader();
+        loader.load(
+          MODEL_PATH,
+          function (gltf) {
+            deejModel = gltf.scene;
+
+            deejModel.traverse((o) => {
+              if (o.isMesh) {
+                o.castShadow = true;
+                o.receiveShadow = true;
+              }
+            });
+
+            // Set the model's initial scale
+            deejModel.scale.set(MODEL_SCALE, MODEL_SCALE, MODEL_SCALE);
+
+            // Set the model's initial rotation
+            deejModel.rotation.y = Math.PI / 6;
+
+            // Offset the y position (downwards)
+            deejModel.position.y = OBJ_VERT;
+
+            // Set initial textures before loading model
+            for (let object of INITIAL_MAP) {
+              initColor(deejModel, object.childID, object.mtl);
+            }
+
+            // Add the model to the scene
+            scene.add(deejModel);
+          },
+          undefined,
+          function (error) {
+            console.error(error);
+          }
+        );
+
+        // Function - Add the textures to the models
+        function initColor(parent, type, mtl) {
+          parent.traverse((o) => {
+            if (o.isMesh) {
+              if (o.name.includes(type)) {
+                o.material = mtl;
+                o.nameID = type; // Set a new property to identify this object
+              }
+            }
+          });
+        }
+
+        // Add lights
+        var hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.61);
+        hemiLight.position.set(0, 50, 0);
+        // Add hemisphere light to scene
+        scene.add(hemiLight);
+
+        var dirLight = new THREE.DirectionalLight(0xffffff, 0.54);
+        dirLight.position.set(-8, 12, 8);
+        dirLight.castShadow = true;
+        dirLight.shadow.mapSize = new THREE.Vector2(1024, 1024);
+        // Add directional Light to scene
+        scene.add(dirLight);
+
+        // Floor plane
+        var floorGeometry = new THREE.PlaneGeometry(5000, 5000, 1, 1);
+        var floorMaterial = new THREE.MeshPhongMaterial({
+          color: 0xeeeeee,
+          shininess: 0,
+        });
+
+        var floor = new THREE.Mesh(floorGeometry, floorMaterial);
+        floor.rotation.x = -0.5 * Math.PI;
+        floor.receiveShadow = true;
+        floor.position.y = OBJ_VERT;
+        scene.add(floor);
+
+        // Add controls
+        var controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.maxPolarAngle = Math.PI / 2;
+        controls.minPolarAngle = Math.PI / 8;
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.1;
+        controls.enablePan = false;
+        controls.autoRotate = true; // Toggle this if you'd like the chair to automatically rotate
+        controls.autoRotateSpeed = 0.4; // 30
+
+        function animate() {
+          controls.update();
+          renderer.render(scene, camera);
+          requestAnimationFrame(animate);
+
+          if (resizeRendererToDisplaySize(renderer)) {
+            const canvas = renderer.domElement;
+            camera.aspect = canvas.clientWidth / canvas.clientHeight;
+            camera.updateProjectionMatrix();
+          }
+
+          if (deejModel != null && loaded == false) {
+            initialRotation();
+            DRAG_NOTICE.classList.add("start");
+          }
+        }
+
+        animate();
+
+        // Aspect ratio correction
+        function resizeRendererToDisplaySize(renderer) {
+          const canvas = renderer.domElement;
+          var width = window.innerWidth;
+          var height = window.innerHeight;
+          var canvasPixelWidth = canvas.width / window.devicePixelRatio;
+          var canvasPixelHeight = canvas.height / window.devicePixelRatio;
+
+          const needResize =
+            canvasPixelWidth !== width || canvasPixelHeight !== height;
+          if (needResize) {
+            renderer.setSize(width, height, false);
+          }
+          return needResize;
+        }
+
+        // Function - Build Colors
+        function buildColors(colors) {
+          for (let [i, color] of colors.entries()) {
+            let swatch = document.createElement("div");
+            swatch.classList.add("tray__swatch");
+
+            if (color.texture) {
+              swatch.style.backgroundImage = "url(" + color.texture + ")";
+            } else {
+              swatch.style.background = "#" + color.color;
+            }
+
+            swatch.setAttribute("data-key", i);
+            TRAY.append(swatch);
+          }
+        }
+
+        buildColors(colors);
+
+        // Select Option
+        const options = document.querySelectorAll(".option");
+
+        for (const option of options) {
+          option.addEventListener("click", selectOption);
+        }
+
+        function selectOption(e) {
+          let option = e.target;
+          activeOption = e.target.dataset.option;
+          for (const otherOption of options) {
+            otherOption.classList.remove("--is-active");
+          }
+          option.classList.add("--is-active");
+        }
+
+        // Swatches
+        const swatches = document.querySelectorAll(".tray__swatch");
+
+        for (const swatch of swatches) {
+          swatch.addEventListener("click", selectSwatch);
+        }
+
+        function selectSwatch(e) {
+          let color = colors[parseInt(e.target.dataset.key)];
+          let new_mtl;
+
+          if (color.texture) {
+            let txt = new THREE.TextureLoader().load(color.texture);
+
+            txt.repeat.set(color.size[0], color.size[1], color.size[2]);
+            txt.wrapS = THREE.RepeatWrapping;
+            txt.wrapT = THREE.RepeatWrapping;
+
+            new_mtl = new THREE.MeshPhongMaterial({
+              map: txt,
+              shininess: color.shininess ? color.shininess : 10,
+            });
+          } else {
+            new_mtl = new THREE.MeshPhongMaterial({
+              color: parseInt("0x" + color.color),
+              shininess: color.shininess ? color.shininess : 10,
+            });
+          }
+
+          setMaterial(deejModel, activeOption, new_mtl);
+        }
+
+        function setMaterial(parent, type, mtl) {
+          parent.traverse((o) => {
+            if (o.isMesh && o.nameID != null) {
+              if (o.nameID == type) {
+                o.material = mtl;
+              }
+            }
+          });
+        }
+
+        // Function - Opening rotate
+        let initRotate = 0;
+
+        function initialRotation() {
+          initRotate++;
+          if (initRotate <= 120) {
+            deejModel.rotation.y += Math.PI / 60;
+          } else {
+            loaded = true;
+          }
+        }
+
+        // option animation stuff
+        var slider = document.getElementById("js-tray"),
+          sliderItems = document.getElementById("js-tray-slide"),
+          difference;
+
+        function slide(wrapper, items) {
+          var posX1 = 0,
+            posX2 = 0,
+            posInitial,
+            threshold = 20,
+            posFinal,
+            slides = items.getElementsByClassName("tray__swatch");
+
+          // Mouse events
+          items.onmousedown = dragStart;
+
+          // Touch events
+          items.addEventListener("touchstart", dragStart);
+          items.addEventListener("touchend", dragEnd);
+          items.addEventListener("touchmove", dragAction);
+
+          function dragStart(e) {
+            e = e || window.event;
+            posInitial = items.offsetLeft;
+            difference = sliderItems.offsetWidth - slider.offsetWidth;
+            difference = difference * -1;
+
+            if (e.type == "touchstart") {
+              posX1 = e.touches[0].clientX;
+            } else {
+              posX1 = e.clientX;
+              document.onmouseup = dragEnd;
+              document.onmousemove = dragAction;
+            }
+          }
+
+          function dragAction(e) {
+            e = e || window.event;
+
+            if (e.type == "touchmove") {
+              posX2 = posX1 - e.touches[0].clientX;
+              posX1 = e.touches[0].clientX;
+            } else {
+              posX2 = posX1 - e.clientX;
+              posX1 = e.clientX;
+            }
+
+            if (
+              items.offsetLeft - posX2 <= 0 &&
+              items.offsetLeft - posX2 >= difference
+            ) {
+              items.style.left = items.offsetLeft - posX2 + "px";
+            }
+          }
+
+          function dragEnd(e) {
+            posFinal = items.offsetLeft;
+            if (posFinal - posInitial < -threshold) {
+            } else if (posFinal - posInitial > threshold) {
+            } else {
+              items.style.left = posInitial + "px";
+            }
+
+            document.onmouseup = null;
+            document.onmousemove = null;
+          }
+        }
+
+        slide(slider, sliderItems);
+      </script>
+    </div>
+  </body>
+  <!-- <footer>
+    <div class="padder"></div>
+    <div class="copyright">
+      <p>Website and content copyright Cole Morris 2016-2020.</p>
+    </div>
+  </footer> -->
+</html>
