@@ -65,7 +65,7 @@
               <strong>&nbsp;Scroll&nbsp;</strong> to zoom. Click
               <strong>&nbsp;parts&nbsp;</strong> on the left to select. Click
               <strong>&nbsp;colors&nbsp;</strong> to apply.
-              <!-- <strong>&nbsp;Drag&nbsp;</strong> swatches to view more. -->
+              <strong>&nbsp;Drag&nbsp;</strong> swatches to view more.
             </p>
           </div>
         </div>
@@ -81,8 +81,6 @@
           {
             color: "c1f6f7", // mint
             shininess: 50,
-            // texture: "images\audiocontroller\3D_parts\base.png",
-            // size: [3, 3, 3],
           },
           {
             color: "202fba", // true blue
@@ -95,6 +93,10 @@
             shininess: 50,
           },
           {
+            color: "900020", // dark red
+            shininess: 50,
+          },
+          {
             color: "b397e8", // lavender
             shininess: 50,
           },
@@ -104,6 +106,14 @@
           },
           {
             color: "ff7119", // Orange
+            shininess: 65,
+          },
+          {
+            color: "db6c35", // Wheat
+            shininess: 65,
+          },
+          {
+            color: "fffd78", // Pale Yellow
             shininess: 65,
           },
           {
@@ -285,7 +295,7 @@
         controls.dampingFactor = 0.1;
         controls.enablePan = false;
         controls.autoRotate = true; // Toggle this if you'd like the chair to automatically rotate
-        controls.autoRotateSpeed = 0.4; // 30
+        controls.autoRotateSpeed = 1; // 30
 
         function animate() {
           controls.update();
@@ -404,8 +414,8 @@
 
         function initialRotation() {
           initRotate++;
-          if (initRotate <= 120) {
-            deejModel.rotation.y += Math.PI / 60;
+          if (initRotate <= 60 ) {
+            deejModel.rotation.y += Math.PI / 30;
           } else {
             loaded = true;
           }
