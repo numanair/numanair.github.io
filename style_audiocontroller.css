@@ -145,7 +145,7 @@ img:active, button:active, .grid-box:active {
 .hero_alt {
   grid-column: 1 / span 2;
   grid-row: 2 / span 1;
-  background-image: url(images/audiocontroller/render.jpg);
+  background-image: url(images/audiocontroller/pink_white_mint.jpg);
   background-position: center left 20%;
   background-size: cover;
   height: 10rem;
