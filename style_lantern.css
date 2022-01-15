@@ -137,6 +137,7 @@ img:active, button:active, .grid-box:active {
 
 /* grid items */
 .hero {
+  background-color: black;
   grid-column: span 3;
   grid-row: span 1;
   width: 100%;
