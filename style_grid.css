@@ -145,6 +145,10 @@ a {
   background-color: #76bf42;
 }
 
+.grid-box .button_macropad {
+  background-color: #f6c6fd;
+}
+
 .grid-box .button_animated {
   color: rgba(0, 0, 0, 1);
   background-color: rgba(255, 255, 255, 0.5);
